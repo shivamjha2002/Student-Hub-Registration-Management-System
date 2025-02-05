@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; padding: 20px; }
+        form { background: white; padding: 20px; width: 50%; margin: auto; border-radius: 8px; }
+        input, select { width: 90%; padding: 8px; margin: 10px 0; }
+        button { background: green; color: white; padding: 10px 15px; border: none; cursor: pointer; }
+        table { width: 80%; margin: auto; border-collapse: collapse; background: white; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ddd; }
+        th { background: #333; color: white; }
+        img { max-width: 80px; max-height: 80px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <h2>Student Registration</h2>
+
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="student_id" placeholder="Student ID" required>
+        <input type="text" name="course" placeholder="Course" required>
+        <input type="text" name="address" placeholder="Address" required>
+        <input type="file" name="image">
+        <button type="submit">Register</button>
+    </form>
+
+    <h2>Registered Students</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Student ID</th>
+            <th>Course</th>
+            <th>Address</th>
+            <th>Image</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student[0] }}</td>
+            <td>{{ student[1] }}</td>
+            <td>{{ student[2] }}</td>
+            <td>{{ student[3] }}</td>
+            <td>{{ student[4] }}</td>
+            <td>
+                {% if student[5] %}
+                    <img src="{{ url_for('static', filename='uploads/' + student[5]) }}" alt="Student Image">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
