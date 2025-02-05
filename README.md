@@ -16,3 +16,17 @@ Backend: Flask (Python)
 Database: MySQL
 Server: Flask Development Server
 File Handling: Image Uploads
+
+
+
+CREATE DATABASE flask_students;
+USE flask_students;
+
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    student_id VARCHAR(50) UNIQUE,
+    course VARCHAR(100),
+    address TEXT,
+    image_path VARCHAR(255)
+);
